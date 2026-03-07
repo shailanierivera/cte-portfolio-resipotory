@@ -421,7 +421,7 @@
 
 <script>
   // ── CONFIG — replace with your Apps Script URL after deployment ──
-  const https://script.google.com/macros/s/AKfycbwHXF3xpNs9_xFcS-wXB6tLV1DFzdbo6fI0uACQmOpDWXotvHHeuykFQCIUYvgcL7K5aQ/exec = 'YOUR_GOOGLE_APPS_https://script.google.com/macros/s/AKfycbwHXF3xpNs9_xFcS-wXB6tLV1DFzdbo6fI0uACQmOpDWXotvHHeuykFQCIUYvgcL7K5aQ/exec_HERE';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHXF3xpNs9_xFcS-wXB6tLV1DFzdbo6fI0uACQmOpDWXotvHHeuykFQCIUYvgcL7K5aQ/exec';
 
   let chosenProg = '';
 
@@ -481,7 +481,7 @@
     };
 
     try {
-      const res    = await fetch(https://script.google.com/macros/s/AKfycbwHXF3xpNs9_xFcS-wXB6tLV1DFzdbo6fI0uACQmOpDWXotvHHeuykFQCIUYvgcL7K5aQ/exec, { method:'POST', body: JSON.stringify(payload) });
+      const res    = await fetch(SCRIPT_URL, { method:'POST', body: JSON.stringify(payload) });
       const result = await res.json();
       if (result.success) {
         document.getElementById('form-body').style.display = 'none';
