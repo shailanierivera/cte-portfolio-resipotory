@@ -493,6 +493,9 @@
 
   // ── RENDER PENDING ─────────────────────────────────────────────
   function renderPending() {
+    // Filter out any rows with empty id (leftover empty sheet rows)
+    const validData = pendingData.filter(p => p.id && String(p.id).trim() !== '' && String(p.id).trim().toLowerCase() !== 'id');
+    pendingData = validData;
     document.getElementById('nbadge').textContent = pendingData.length;
     const tb = document.getElementById('tb-pend');
     if (!pendingData.length) { tb.innerHTML = `<tr><td class="empty-td" colspan="6">No pending submissions — all caught up ✓</td></tr>`; return; }
