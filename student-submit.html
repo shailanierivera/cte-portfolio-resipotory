@@ -7,280 +7,119 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --maroon:   #7b1a2e;
-    --maroon2:  #9b2a40;
-    --gold:     #c8a84b;
-    --gold-lt:  #e0c87a;
-    --cream:    #fdf8f0;
-    --warm:     #f5ede0;
-    --surface:  #ffffff;
-    --ink:      #1c1410;
-    --muted:    #7a6e66;
-    --border:   #e8ddd0;
-    --green:    #2d6a4f;
-    --red:      #b5192b;
+    --maroon:#7b1a2e; --maroon2:#9b2a40; --gold:#c8a84b; --gold-lt:#e0c87a;
+    --cream:#fdf8f0; --warm:#f5ede0; --surface:#ffffff; --ink:#1c1410;
+    --muted:#7a6e66; --border:#e8ddd0; --green:#2d6a4f; --red:#b5192b;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;}
 
-  /* TOP BAR */
-  .topbar {
-    background: var(--maroon);
-    padding: 0.6rem 2rem;
-    display: flex; align-items: center; gap: 14px;
-  }
-  .csu-seal {
-    width: 40px; height: 40px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700; font-size: 14px;
-    color: var(--maroon); flex-shrink: 0;
-    border: 2px solid var(--gold-lt);
-  }
-  .topbar-text { color: rgba(253,248,240,0.9); font-size: 0.82rem; line-height: 1.3; }
-  .topbar-text strong { display: block; font-size: 0.92rem; color: var(--gold-lt); font-weight: 600; }
+  .topbar{background:var(--maroon);padding:.6rem 2rem;display:flex;align-items:center;gap:14px;}
+  .csu-seal{width:40px;height:40px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:14px;color:var(--maroon);border:2px solid var(--gold-lt);}
+  .topbar-text{color:rgba(253,248,240,.9);font-size:.82rem;line-height:1.3;}
+  .topbar-text strong{display:block;font-size:.92rem;color:var(--gold-lt);font-weight:600;}
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(160deg, var(--maroon) 0%, #4a0e1c 100%);
-    padding: 4.5rem 2rem 3.5rem;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 70% 50% at 20% 50%, rgba(200,168,75,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 70% at 80% 30%, rgba(200,168,75,0.06) 0%, transparent 60%);
-  }
-  .hero::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-lt), var(--gold), transparent);
-  }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(200,168,75,0.15);
-    border: 1px solid rgba(200,168,75,0.35);
-    color: var(--gold-lt);
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 5px 16px; border-radius: 100px;
-    margin-bottom: 1.5rem; position: relative;
-  }
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 700; line-height: 1.15;
-    color: #fdf8f0; margin-bottom: 0.75rem;
-    position: relative;
-  }
-  .hero h1 em { font-style: italic; color: var(--gold-lt); }
-  .hero p {
-    color: rgba(253,248,240,0.65);
-    font-size: 0.98rem; max-width: 500px;
-    margin: 0 auto; line-height: 1.75;
-    position: relative;
-  }
+  .hero{background:linear-gradient(160deg,var(--maroon) 0%,#4a0e1c 100%);padding:4.5rem 2rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 20% 50%,rgba(200,168,75,.08) 0%,transparent 60%),radial-gradient(ellipse 50% 70% at 80% 30%,rgba(200,168,75,.06) 0%,transparent 60%);}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold-lt),var(--gold),transparent);}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,75,.15);border:1px solid rgba(200,168,75,.35);color:var(--gold-lt);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:1.5rem;position:relative;}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;color:#fdf8f0;margin-bottom:.75rem;position:relative;}
+  .hero h1 em{font-style:italic;color:var(--gold-lt);}
+  .hero p{color:rgba(253,248,240,.65);font-size:.98rem;max-width:500px;margin:0 auto;line-height:1.75;position:relative;}
 
-  /* FORM WRAPPER */
-  .form-wrap {
-    max-width: 740px; margin: -1.5rem auto 5rem;
-    padding: 0 1.5rem; position: relative; z-index: 2;
-  }
+  .form-wrap{max-width:740px;margin:-1.5rem auto 5rem;padding:0 1.5rem;position:relative;z-index:2;}
+  .form-card{background:var(--surface);border-radius:20px;box-shadow:0 12px 48px rgba(123,26,46,.12),0 2px 8px rgba(0,0,0,.06);overflow:hidden;border:1px solid var(--border);}
 
-  .form-card {
-    background: var(--surface);
-    border-radius: 20px;
-    box-shadow: 0 12px 48px rgba(123,26,46,0.12), 0 2px 8px rgba(0,0,0,0.06);
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
+  .progress-bar{height:4px;background:var(--warm);}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--maroon),var(--gold));width:0%;transition:width .4s ease;}
 
-  /* PROGRESS BAR */
-  .progress-bar {
-    height: 4px;
-    background: var(--warm);
-    position: relative; overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--maroon), var(--gold));
-    width: 0%;
-    transition: width 0.4s ease;
-  }
+  .fsection{padding:2rem 2.5rem 1.75rem;border-bottom:1px solid var(--border);}
+  .fsection:last-of-type{border-bottom:none;}
+  .sec-head{display:flex;align-items:center;gap:10px;margin-bottom:.35rem;}
+  .sec-num{width:26px;height:26px;background:var(--maroon);color:#fdf8f0;border-radius:50%;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--maroon);}
+  .sec-desc{font-size:.82rem;color:var(--muted);margin-bottom:1.5rem;padding-left:36px;}
 
-  /* SECTION */
-  .fsection {
-    padding: 2rem 2.5rem 1.75rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .fsection:last-of-type { border-bottom: none; }
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .fgroup{margin-bottom:1rem;}
+  .fgroup:last-child{margin-bottom:0;}
+  label{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:5px;}
+  label .req{color:var(--red);margin-left:2px;}
 
-  .sec-head {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 0.35rem;
-  }
-  .sec-num {
-    width: 26px; height: 26px;
-    background: var(--maroon); color: #fdf8f0;
-    border-radius: 50%;
-    font-size: 0.75rem; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .sec-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem; font-weight: 700;
-    color: var(--maroon);
-  }
-  .sec-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.5rem; padding-left: 36px; }
-
-  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .fgroup { margin-bottom: 1rem; }
-  .fgroup:last-child { margin-bottom: 0; }
-
-  label {
-    display: block; font-size: 0.8rem; font-weight: 600;
-    color: var(--ink); margin-bottom: 5px; letter-spacing: 0.01em;
-  }
-  label .req { color: var(--red); margin-left: 2px; }
-
-  .finput, .fselect, .ftextarea {
-    width: 100%; padding: 10px 14px;
-    border: 1.5px solid var(--border); border-radius: 10px;
-    font-family: 'Outfit', sans-serif; font-size: 0.88rem;
-    color: var(--ink); background: var(--cream);
-    outline: none; transition: all 0.2s;
-  }
-  .finput:focus, .fselect:focus, .ftextarea:focus {
-    border-color: var(--maroon);
-    background: white;
-    box-shadow: 0 0 0 3px rgba(123,26,46,0.07);
-  }
-  .finput::placeholder, .ftextarea::placeholder { color: #b0a090; }
-  .ftextarea { resize: vertical; min-height: 120px; line-height: 1.65; }
-  .fselect {
-    appearance: none; cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%237a6e66' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 14px center;
-    padding-right: 36px; background-color: var(--cream);
-  }
-  .fhint { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
-  .char-wrap { display: flex; justify-content: flex-end; margin-top: 4px; }
-  .char-ct { font-size: 0.75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .finput,.ftextarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Outfit',sans-serif;font-size:.88rem;color:var(--ink);background:var(--cream);outline:none;transition:all .2s;}
+  .finput:focus,.ftextarea:focus{border-color:var(--maroon);background:white;box-shadow:0 0 0 3px rgba(123,26,46,.07);}
+  .finput::placeholder,.ftextarea::placeholder{color:#b0a090;}
+  .ftextarea{resize:vertical;min-height:120px;line-height:1.65;}
+  .fhint{font-size:.75rem;color:var(--muted);margin-top:4px;}
+  .char-wrap{display:flex;justify-content:flex-end;margin-top:4px;}
+  .char-ct{font-size:.75rem;color:var(--muted);}
 
   /* PROGRAM CARDS */
-  .prog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-  .prog-card {
-    border: 2px solid var(--border); border-radius: 13px;
-    padding: 1rem 1rem 1rem 1.1rem;
-    cursor: pointer; transition: all 0.2s;
-    display: flex; align-items: center; gap: 12px;
-    background: var(--cream); position: relative;
+  .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+  .prog-card{border:2px solid var(--border);border-radius:13px;padding:1rem 1rem 1rem 1.1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px;background:var(--cream);position:relative;}
+  .prog-card:hover{border-color:var(--maroon2);background:white;}
+  .prog-card.sel{border-color:var(--maroon);background:rgba(123,26,46,.04);box-shadow:0 0 0 3px rgba(123,26,46,.08);}
+  .prog-card.sel::after{content:'✓';position:absolute;top:8px;right:10px;width:18px;height:18px;background:var(--maroon);color:white;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .prog-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+  .prog-name{font-size:.88rem;font-weight:600;color:var(--ink);}
+  .prog-sub{font-size:.73rem;color:var(--muted);margin-top:1px;}
+
+  /* FILE UPLOAD */
+  .file-upload-area {
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--cream);
+    position: relative;
   }
-  .prog-card:hover { border-color: var(--maroon2); background: white; }
-  .prog-card.sel {
-    border-color: var(--maroon);
-    background: rgba(123,26,46,0.04);
-    box-shadow: 0 0 0 3px rgba(123,26,46,0.08);
-  }
-  .prog-card.sel::after {
-    content: '✓';
-    position: absolute; top: 8px; right: 10px;
-    width: 18px; height: 18px;
-    background: var(--maroon); color: white;
-    border-radius: 50%; font-size: 10px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .prog-icon {
-    width: 38px; height: 38px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.3rem; flex-shrink: 0;
-  }
-  .prog-name { font-size: 0.88rem; font-weight: 600; color: var(--ink); }
-  .prog-sub  { font-size: 0.73rem; color: var(--muted); margin-top: 1px; }
+  .file-upload-area:hover { border-color: var(--maroon); background: rgba(123,26,46,0.03); }
+  .file-upload-area.has-file { border-color: var(--green); background: rgba(45,106,79,0.05); border-style: solid; }
+  .file-upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .upload-title { font-size: 0.88rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
+  .upload-sub { font-size: 0.75rem; color: var(--muted); }
+  .upload-status { font-size: 0.82rem; font-weight: 600; margin-top: 0.5rem; }
+  .upload-status.ok { color: var(--green); }
+  .upload-status.uploading { color: var(--gold); }
+  .upload-status.err { color: var(--red); }
+  .file-size-note { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
 
   /* SUBMIT FOOTER */
-  .form-footer {
-    padding: 1.5rem 2.5rem;
-    background: var(--warm);
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 1rem; flex-wrap: wrap;
-    border-top: 1px solid var(--border);
-  }
-  .footer-note { font-size: 0.8rem; color: var(--muted); max-width: 360px; line-height: 1.55; }
-  .footer-note strong { color: var(--maroon); }
-
-  .btn-submit {
-    padding: 12px 30px;
-    background: var(--maroon);
-    border: none; border-radius: 12px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.92rem; font-weight: 700;
-    color: #fdf8f0; cursor: pointer;
-    transition: all 0.2s;
-    display: flex; align-items: center; gap: 8px;
-    white-space: nowrap;
-  }
-  .btn-submit:hover { background: var(--maroon2); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(123,26,46,0.25); }
-  .btn-submit:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+  .form-footer{padding:1.5rem 2.5rem;background:var(--warm);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--border);}
+  .footer-note{font-size:.8rem;color:var(--muted);max-width:360px;line-height:1.55;}
+  .footer-note strong{color:var(--maroon);}
+  .btn-submit{padding:12px 30px;background:var(--maroon);border:none;border-radius:12px;font-family:'Outfit',sans-serif;font-size:.92rem;font-weight:700;color:#fdf8f0;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+  .btn-submit:hover{background:var(--maroon2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(123,26,46,.25);}
+  .btn-submit:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;}
 
   /* SUCCESS */
-  .success-view {
-    display: none; text-align: center; padding: 4.5rem 2rem;
-  }
-  .success-circle {
-    width: 76px; height: 76px;
-    background: linear-gradient(135deg, var(--maroon), var(--maroon2));
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem; margin: 0 auto 1.5rem;
-    box-shadow: 0 8px 24px rgba(123,26,46,0.3);
-  }
-  .success-view h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem; font-weight: 700; color: var(--maroon);
-    margin-bottom: 0.6rem;
-  }
-  .success-view p { color: var(--muted); line-height: 1.7; max-width: 400px; margin: 0 auto 2rem; font-size: 0.95rem; }
-  .btn-again {
-    padding: 11px 26px; background: none;
-    border: 2px solid var(--maroon); border-radius: 10px;
-    font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 600;
-    color: var(--maroon); cursor: pointer; transition: all 0.2s;
-  }
-  .btn-again:hover { background: var(--maroon); color: #fdf8f0; }
+  .success-view{display:none;text-align:center;padding:4.5rem 2rem;}
+  .success-circle{width:76px;height:76px;background:linear-gradient(135deg,var(--maroon),var(--maroon2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.5rem;box-shadow:0 8px 24px rgba(123,26,46,.3);}
+  .success-view h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--maroon);margin-bottom:.6rem;}
+  .success-view p{color:var(--muted);line-height:1.7;max-width:400px;margin:0 auto 2rem;font-size:.95rem;}
+  .btn-again{padding:11px 26px;background:none;border:2px solid var(--maroon);border-radius:10px;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;color:var(--maroon);cursor:pointer;transition:all .2s;}
+  .btn-again:hover{background:var(--maroon);color:#fdf8f0;}
 
   /* TOAST */
-  .toast {
-    position: fixed; bottom: 2rem; right: 2rem;
-    padding: 13px 18px; border-radius: 12px;
-    font-size: 0.87rem; font-weight: 500;
-    z-index: 999; display: flex; align-items: center; gap: 9px;
-    transform: translateY(80px); opacity: 0;
-    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.15); max-width: 320px;
-  }
-  .toast.ok  { background: #0f2e1a; color: #6ee7a0; border: 1px solid #2d6a4f; }
-  .toast.err { background: #2e0f14; color: #f87171; border: 1px solid var(--red); }
-  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast{position:fixed;bottom:2rem;right:2rem;padding:13px 18px;border-radius:12px;font-size:.87rem;font-weight:500;z-index:999;display:flex;align-items:center;gap:9px;transform:translateY(80px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 8px 28px rgba(0,0,0,.15);max-width:320px;}
+  .toast.ok{background:#0f2e1a;color:#6ee7a0;border:1px solid #2d6a4f;}
+  .toast.err{background:#2e0f14;color:#f87171;border:1px solid var(--red);}
+  .toast.show{transform:translateY(0);opacity:1;}
 
-  @media(max-width:580px) {
-    .frow { grid-template-columns: 1fr; }
-    .prog-grid { grid-template-columns: 1fr; }
-    .fsection { padding: 1.5rem; }
-    .form-footer { flex-direction: column; align-items: stretch; }
-    .btn-submit { justify-content: center; }
+  @media(max-width:580px){
+    .frow{grid-template-columns:1fr;}
+    .prog-grid{grid-template-columns:1fr;}
+    .fsection{padding:1.5rem;}
+    .form-footer{flex-direction:column;align-items:stretch;}
+    .btn-submit{justify-content:center;}
   }
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <div class="csu-seal">CSU</div>
   <div class="topbar-text">
@@ -289,17 +128,14 @@
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">📋 Student Internship Portfolio Submission</div>
   <h1>Document Your<br><em>Teaching Journey</em></h1>
   <p>Submit your internship portfolio for faculty review. Approved portfolios will be preserved in the CTE institutional repository for future reference.</p>
 </div>
 
-<!-- FORM -->
 <div class="form-wrap">
   <div class="form-card">
-
     <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
 
     <!-- SUCCESS -->
@@ -307,7 +143,7 @@
       <div class="success-circle">✓</div>
       <h2>Successfully Submitted!</h2>
       <p>Your portfolio has been submitted for faculty review. Once approved by the CTE faculty, it will be published to the institutional repository.</p>
-      <button class="btn-again" onclick="reset()">Submit Another Portfolio</button>
+      <button class="btn-again" onclick="resetForm()">Submit Another Portfolio</button>
     </div>
 
     <div id="form-body">
@@ -387,55 +223,84 @@
         </div>
       </div>
 
-      <!-- 4. PORTFOLIO -->
+      <!-- 4. PORTFOLIO CONTENT -->
       <div class="fsection">
         <div class="sec-head"><div class="sec-num">4</div><div class="sec-title">Portfolio Content</div></div>
         <div class="sec-desc">Share your key competencies and reflect on your internship experience.</div>
         <div class="fgroup">
           <label>Key Teaching Competencies Developed</label>
-          <input class="finput" id="f-comps" type="text" placeholder="e.g. Lesson Planning, Classroom Management, Differentiated Instruction, Formative Assessment">
+          <input class="finput" id="f-comps" type="text" placeholder="e.g. Lesson Planning, Classroom Management, Differentiated Instruction">
           <div class="fhint">Separate each competency with a comma</div>
         </div>
         <div class="fgroup">
           <label>Reflection & Internship Summary <span class="req">*</span></label>
-          <textarea class="ftextarea" id="f-reflection" maxlength="1500" oninput="charCount(this); updateProgress()" placeholder="Describe your internship experience — the challenges you faced, teaching strategies you applied, memorable classroom moments, and the most important lessons you learned as a future educator…"></textarea>
+          <textarea class="ftextarea" id="f-reflection" maxlength="1500" oninput="charCount(this);updateProgress()" placeholder="Describe your internship experience — the challenges you faced, teaching strategies you applied, memorable classroom moments, and the most important lessons you learned as a future educator…"></textarea>
           <div class="char-wrap"><span class="char-ct"><span id="ch-ct">0</span> / 1500</span></div>
+        </div>
+      </div>
+
+      <!-- 5. FILE UPLOADS -->
+      <div class="fsection">
+        <div class="sec-head"><div class="sec-num">5</div><div class="sec-title">File Attachments</div></div>
+        <div class="sec-desc">Upload your Teaching Internship Portfolio and Action Research as PDF files. Files are saved securely to the CTE Google Drive.</div>
+
+        <div class="fgroup">
+          <label>Teaching Internship Portfolio <span class="req">*</span></label>
+          <div class="file-upload-area" id="portfolio-drop">
+            <input type="file" id="portfolio-file" accept=".pdf" onchange="handleFile(this,'portfolio')">
+            <div class="upload-icon">📄</div>
+            <div class="upload-title">Click to upload your Portfolio PDF</div>
+            <div class="upload-sub">or drag and drop here</div>
+            <div class="upload-status" id="portfolio-status"></div>
+          </div>
+          <div class="file-size-note">📌 PDF only · Maximum file size: 10MB</div>
+        </div>
+
+        <div class="fgroup" style="margin-top:1rem">
+          <label>Action Research Paper</label>
+          <div class="file-upload-area" id="research-drop">
+            <input type="file" id="research-file" accept=".pdf" onchange="handleFile(this,'research')">
+            <div class="upload-icon">🔬</div>
+            <div class="upload-title">Click to upload your Action Research PDF</div>
+            <div class="upload-sub">or drag and drop here</div>
+            <div class="upload-status" id="research-status"></div>
+          </div>
+          <div class="file-size-note">📌 PDF only · Maximum file size: 10MB · Optional</div>
         </div>
       </div>
 
       <!-- FOOTER -->
       <div class="form-footer">
         <div class="footer-note">
-          <strong>Note:</strong> Your portfolio will be reviewed by CTE faculty before being published. Ensure all information is accurate and complete before submitting.
+          <strong>Note:</strong> Your portfolio will be reviewed by CTE faculty before being published. Files are uploaded securely to Google Drive.
         </div>
         <button class="btn-submit" id="sub-btn" onclick="doSubmit()">
           <span id="sub-label">Submit Portfolio →</span>
         </button>
       </div>
 
-    </div><!-- /form-body -->
+    </div>
   </div>
 </div>
 
 <div class="toast" id="toast"><span id="toast-msg"></span></div>
 
 <script>
-  // ── CONFIG — replace with your Apps Script URL after deployment ──
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHXF3xpNs9_xFcS-wXB6tLV1DFzdbo6fI0uACQmOpDWXotvHHeuykFQCIUYvgcL7K5aQ/exec';
 
   let chosenProg = '';
+  let uploadedFiles = { portfolio: null, research: null };
 
+  // ── PROGRAM SELECT ────────────────────────────────────
   function selProg(p) {
     chosenProg = p;
-    const map = { BEED:'pc-beed', 'BSED Math':'pc-math', 'BSED English':'pc-english', 'BSED Science':'pc-science' };
+    const map = { BEED:'pc-beed','BSED Math':'pc-math','BSED English':'pc-english','BSED Science':'pc-science' };
     document.querySelectorAll('.prog-card').forEach(c => c.classList.remove('sel'));
     document.getElementById(map[p]).classList.add('sel');
     updateProgress();
   }
 
-  function charCount(el) {
-    document.getElementById('ch-ct').textContent = el.value.length;
-  }
+  function charCount(el) { document.getElementById('ch-ct').textContent = el.value.length; }
 
   function updateProgress() {
     const fields = ['f-name','f-year','f-school','f-reflection'];
@@ -445,7 +310,7 @@
     document.getElementById('prog-fill').style.width = pct + '%';
   }
 
-  function toast(msg, type) {
+  function showToast(msg, type) {
     const t = document.getElementById('toast');
     t.className = `toast ${type}`;
     document.getElementById('toast-msg').textContent = msg;
@@ -453,54 +318,154 @@
     setTimeout(() => t.classList.remove('show'), 4500);
   }
 
+  // ── FILE HANDLING ─────────────────────────────────────
+  function handleFile(input, type) {
+    const file = input.files[0];
+    if (!file) return;
+
+    // Validate type
+    if (file.type !== 'application/pdf') {
+      showToast('⚠️ Please upload a PDF file only.', 'err');
+      input.value = '';
+      return;
+    }
+
+    // Validate size (10MB max)
+    if (file.size > 10 * 1024 * 1024) {
+      showToast('⚠️ File is too large. Maximum size is 10MB.', 'err');
+      input.value = '';
+      return;
+    }
+
+    const statusEl = document.getElementById(`${type}-status`);
+    const dropEl   = document.getElementById(`${type}-drop`);
+    statusEl.className = 'upload-status ok';
+    statusEl.textContent = `✓ ${file.name} (${(file.size/1024/1024).toFixed(2)} MB) — ready to upload`;
+    dropEl.classList.add('has-file');
+
+    // Store file for later upload
+    uploadedFiles[type] = file;
+  }
+
+  // ── UPLOAD FILE TO DRIVE ──────────────────────────────
+  async function uploadFileToDrive(file, type, studentName, program, year) {
+    return new Promise((resolve, reject) => {
+      const statusEl = document.getElementById(`${type}-status`);
+      statusEl.className = 'upload-status uploading';
+      statusEl.textContent = `⏳ Uploading ${file.name}…`;
+
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        try {
+          // Convert to base64
+          const base64 = e.target.result.split(',')[1];
+          const payload = {
+            action:      'uploadFile',
+            fileData:    base64,
+            fileName:    file.name,
+            mimeType:    file.type,
+            studentName: studentName,
+            program:     program,
+            year:        year
+          };
+
+          const res    = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
+          const result = await res.json();
+
+          if (result.success) {
+            statusEl.className  = 'upload-status ok';
+            statusEl.textContent = `✅ Uploaded: ${result.fileName}`;
+            resolve({ url: result.fileUrl, name: result.fileName });
+          } else {
+            throw new Error(result.error || 'Upload failed');
+          }
+        } catch(err) {
+          statusEl.className  = 'upload-status err';
+          statusEl.textContent = `❌ Upload failed: ${err.message}`;
+          reject(err);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ── SUBMIT ────────────────────────────────────────────
   async function doSubmit() {
     const name       = document.getElementById('f-name').value.trim();
     const year       = document.getElementById('f-year').value.trim();
     const school     = document.getElementById('f-school').value.trim();
     const reflection = document.getElementById('f-reflection').value.trim();
 
-    if (!name)       { toast('⚠️ Please enter your full name.', 'err'); return; }
-    if (!chosenProg) { toast('⚠️ Please select your program.', 'err'); return; }
-    if (!year)       { toast('⚠️ Please enter your batch/academic year.', 'err'); return; }
-    if (!school)     { toast('⚠️ Please enter your cooperating school.', 'err'); return; }
-    if (!reflection) { toast('⚠️ Please write your reflection.', 'err'); return; }
+    if (!name)                    { showToast('⚠️ Please enter your full name.', 'err'); return; }
+    if (!chosenProg)              { showToast('⚠️ Please select your program.', 'err'); return; }
+    if (!year)                    { showToast('⚠️ Please enter your batch/academic year.', 'err'); return; }
+    if (!school)                  { showToast('⚠️ Please enter your cooperating school.', 'err'); return; }
+    if (!reflection)              { showToast('⚠️ Please write your reflection.', 'err'); return; }
+    if (!uploadedFiles.portfolio) { showToast('⚠️ Please upload your Teaching Internship Portfolio PDF.', 'err'); return; }
 
     const btn = document.getElementById('sub-btn');
     btn.disabled = true;
-    document.getElementById('sub-label').textContent = 'Submitting…';
-
-    const payload = {
-      action: 'submit', name,
-      studentId:    document.getElementById('f-id').value.trim(),
-      program:      chosenProg, year, school,
-      teacher:      document.getElementById('f-teacher').value.trim(),
-      grade:        document.getElementById('f-grade').value.trim(),
-      subject:      document.getElementById('f-subject').value.trim(),
-      competencies: document.getElementById('f-comps').value.split(',').map(s=>s.trim()).filter(Boolean),
-      reflection,
-    };
+    document.getElementById('sub-label').textContent = 'Uploading files…';
 
     try {
-      const res    = await fetch(SCRIPT_URL, { method:'POST', body: JSON.stringify(payload) });
+      // Upload portfolio PDF
+      const portfolioResult = await uploadFileToDrive(
+        uploadedFiles.portfolio, 'portfolio', name, chosenProg, year
+      );
+
+      // Upload research PDF if provided
+      let researchResult = { url: '', name: '' };
+      if (uploadedFiles.research) {
+        document.getElementById('sub-label').textContent = 'Uploading research…';
+        researchResult = await uploadFileToDrive(
+          uploadedFiles.research, 'research', name, chosenProg, year
+        );
+      }
+
+      document.getElementById('sub-label').textContent = 'Saving portfolio…';
+
+      // Submit form data
+      const payload = {
+        action: 'submit', name,
+        studentId:    document.getElementById('f-id').value.trim(),
+        program:      chosenProg, year, school,
+        teacher:      document.getElementById('f-teacher').value.trim(),
+        grade:        document.getElementById('f-grade').value.trim(),
+        subject:      document.getElementById('f-subject').value.trim(),
+        competencies: document.getElementById('f-comps').value.split(',').map(s=>s.trim()).filter(Boolean),
+        reflection,
+        portfolioFileUrl:  portfolioResult.url,
+        portfolioFileName: portfolioResult.name,
+        researchFileUrl:   researchResult.url,
+        researchFileName:  researchResult.name,
+      };
+
+      const res    = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
       const result = await res.json();
+
       if (result.success) {
         document.getElementById('form-body').style.display = 'none';
         document.getElementById('success-view').style.display = 'block';
-      } else { throw new Error(result.error || 'Unknown error'); }
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
     } catch(e) {
-      toast('❌ Submission failed. Please try again or contact your faculty.', 'err');
+      showToast('❌ ' + (e.message || 'Submission failed. Please try again.'), 'err');
     } finally {
       btn.disabled = false;
       document.getElementById('sub-label').textContent = 'Submit Portfolio →';
     }
   }
 
-  function reset() {
+  function resetForm() {
     document.getElementById('form-body').style.display = 'block';
     document.getElementById('success-view').style.display = 'none';
-    document.querySelectorAll('.finput, .ftextarea').forEach(el => el.value = '');
+    document.querySelectorAll('.finput,.ftextarea').forEach(el => el.value = '');
     document.querySelectorAll('.prog-card').forEach(c => c.classList.remove('sel'));
+    document.querySelectorAll('.file-upload-area').forEach(el => el.classList.remove('has-file'));
+    document.querySelectorAll('.upload-status').forEach(el => { el.textContent = ''; el.className = 'upload-status'; });
     chosenProg = '';
+    uploadedFiles = { portfolio: null, research: null };
     document.getElementById('ch-ct').textContent = '0';
     document.getElementById('prog-fill').style.width = '0%';
   }
