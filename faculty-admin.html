@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faculty Admin — CTE Portfolio Repository | CSU Aparri</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;0,900;1,600&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0c1118;
+    --surface:  #131b24;
+    --card:     #1a2535;
+    --border:   #253041;
+    --maroon:   #7b1a2e;
+    --maroon2:  #9b2a40;
+    --gold:     #c8a84b;
+    --gold-dim: rgba(200,168,75,0.14);
+    --text:     #dde4ee;
+    --cream:    #f0e8dc;
+    --muted:    #5d7080;
+    --green:    #4ade80;
+    --green-d:  rgba(74,222,128,0.12);
+    --red:      #f87171;
+    --red-d:    rgba(248,113,113,0.12);
+    --teal:     #2dd4bf;
+    --teal-d:   rgba(45,212,191,0.12);
+    --amber:    #fbbf24;
+    --amber-d:  rgba(251,191,36,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── LOGIN ── */
+  .login-wrap {
+    min-height: 100vh; display: flex;
+    align-items: center; justify-content: center; padding: 2rem;
+    background:
+      radial-gradient(ellipse 60% 50% at 30% 20%, rgba(123,26,46,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 70% 80%, rgba(200,168,75,0.06) 0%, transparent 60%),
+      var(--bg);
+  }
+  .login-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 22px; padding: 3rem 2.5rem;
+    width: 100%; max-width: 420px; text-align: center;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  }
+  .login-seal {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--maroon), var(--maroon2));
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 0.5rem;
+    box-shadow: 0 8px 24px rgba(123,26,46,0.4);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 900; color: var(--cream);
+  }
+  .login-school {
+    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 0.3rem;
+  }
+  .login-box h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem; font-weight: 900;
+    color: var(--cream); margin-bottom: 0.3rem;
+  }
+  .login-box p { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+  .login-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-align: left; display: block; margin-bottom: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .login-input {
+    width: 100%; padding: 12px 16px;
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: 11px; color: var(--text);
+    font-family: 'Outfit', sans-serif; font-size: 0.95rem;
+    outline: none; margin-bottom: 1.25rem; letter-spacing: 0.1em;
+    transition: border-color 0.2s;
+  }
+  .login-input:focus { border-color: var(--gold); }
+  .login-btn {
+    width: 100%; padding: 13px;
+    background: linear-gradient(135deg, var(--maroon), var(--maroon2));
+    border: none; border-radius: 11px;
+    font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 700;
+    color: var(--cream); cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(123,26,46,0.35);
+  }
+  .login-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .login-err { color: var(--red); font-size: 0.82rem; margin-top: 0.75rem; min-height: 18px; }
+
+  /* ── APP SHELL ── */
+  .app { display: none; min-height: 100vh; }
+  .layout { display: flex; min-height: 100vh; }
+
+  /* SIDEBAR */
+  .sidebar {
+    width: 256px; background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    display: flex; flex-direction: column;
+    flex-shrink: 0; position: sticky; top: 0; height: 100vh;
+  }
+  .sb-logo { padding: 0 0.5rem; margin-bottom: 2rem; }
+  .sb-school { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .sb-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-weight: 700; color: var(--cream);
+    line-height: 1.3; margin-top: 2px;
+  }
+  .sb-name span { color: var(--gold); }
+
+  .sb-sect { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 0 0.5rem; margin: 1.25rem 0 0.4rem; }
+
+  .nav-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px; border-radius: 9px;
+    border: none; background: none; width: 100%; text-align: left;
+    font-family: 'Outfit', sans-serif; font-size: 0.87rem; font-weight: 500;
+    color: var(--muted); cursor: pointer; transition: all 0.15s;
+  }
+  .nav-btn:hover { background: var(--card); color: var(--text); }
+  .nav-btn.active { background: var(--gold-dim); color: var(--gold); font-weight: 600; }
+  .nav-btn .ico { width: 18px; text-align: center; }
+  .nbadge { margin-left: auto; background: var(--red); color: white; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 100px; min-width: 20px; text-align: center; }
+
+  .sb-foot { margin-top: auto; }
+  .logout-btn {
+    width: 100%; padding: 9px 12px;
+    background: none; border: 1px solid var(--border);
+    border-radius: 9px; font-family: 'Outfit', sans-serif;
+    font-size: 0.83rem; color: var(--muted);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .logout-btn:hover { border-color: var(--red); color: var(--red); }
+
+  /* CONTENT */
+  .content { flex: 1; padding: 2.5rem 2rem; overflow-x: hidden; max-width: calc(100vw - 256px); }
+  .page { display: none; }
+  .page.on { display: block; }
+
+  .pg-head { margin-bottom: 2rem; }
+  .pg-head h1 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 900; color: var(--cream); margin-bottom: 0.2rem; }
+  .pg-head p { color: var(--muted); font-size: 0.88rem; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 2rem; }
+  .sc {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.25rem 1.5rem;
+  }
+  .sc-lbl { font-size: 0.73rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); margin-bottom: 0.5rem; }
+  .sc-val { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 900; color: var(--cream); line-height: 1; }
+  .sc-sub { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
+
+  /* TABLE CARD */
+  .tcard { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .thead-bar {
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+  .thead-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--cream); }
+  .sbox {
+    padding: 8px 14px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 9px;
+    color: var(--text); font-family: 'Outfit', sans-serif; font-size: 0.83rem;
+    outline: none; transition: border-color 0.2s; width: 220px;
+  }
+  .sbox:focus { border-color: var(--gold); }
+  .sbox::placeholder { color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; }
+  th { padding: 10px 16px; text-align: left; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); border-bottom: 1px solid var(--border); background: var(--surface); }
+  td { padding: 13px 16px; font-size: 0.86rem; border-bottom: 1px solid rgba(37,48,65,0.6); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.015); }
+
+  .ppill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+  .pb { background: rgba(45,212,191,0.15); color: var(--teal); }
+  .pm { background: rgba(96,165,250,0.15); color: #60a5fa; }
+  .pe { background: rgba(248,113,113,0.15); color: var(--red); }
+  .ps { background: rgba(167,139,250,0.15); color: #a78bfa; }
+
+  .spill { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 700; }
+  .sp-pend { background: var(--amber-d); color: var(--amber); }
+  .sp-appr { background: var(--green-d); color: var(--green); }
+
+  .acts { display: flex; gap: 5px; }
+  .ab {
+    padding: 6px 11px; border-radius: 7px;
+    font-family: 'Outfit', sans-serif; font-size: 0.76rem; font-weight: 600;
+    border: none; cursor: pointer; transition: all 0.15s; white-space: nowrap;
+  }
+  .ab-view   { background: var(--teal-d);  color: var(--teal); }
+  .ab-view:hover   { background: var(--teal); color: #042f2e; }
+  .ab-appr   { background: var(--green-d); color: var(--green); }
+  .ab-appr:hover   { background: var(--green); color: #052e16; }
+  .ab-rej    { background: var(--red-d);   color: var(--red); }
+  .ab-rej:hover    { background: var(--red); color: white; }
+  .ab-del    { background: rgba(93,112,128,0.12); color: var(--muted); }
+  .ab-del:hover    { background: var(--red-d); color: var(--red); }
+
+  .empty-td { text-align: center; padding: 3.5rem; color: var(--muted); font-style: italic; }
+
+  /* YEAR TABS */
+  .ytabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .ytab {
+    padding: 5px 14px; border-radius: 100px;
+    font-size: 0.8rem; font-weight: 600; font-family: 'DM Mono', monospace;
+    border: 1px solid var(--border); background: none;
+    color: var(--muted); cursor: pointer; transition: all 0.15s;
+  }
+  .ytab:hover { border-color: var(--gold); color: var(--gold); }
+  .ytab.on { background: var(--gold); border-color: var(--gold); color: #1a1005; }
+
+  /* SIDE PANEL */
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.65); backdrop-filter: blur(6px);
+    z-index: 200;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s;
+    display: flex; align-items: stretch; justify-content: flex-end;
+  }
+  .overlay.on { opacity: 1; pointer-events: all; }
+  .panel {
+    width: 500px; max-width: 95vw;
+    background: var(--surface); border-left: 1px solid var(--border);
+    overflow-y: auto;
+    transform: translateX(30px); transition: transform 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .overlay.on .panel { transform: translateX(0); }
+
+  .panel-top {
+    padding: 1.5rem 2rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .panel-top h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 900; color: var(--cream); }
+  .close-x {
+    width: 34px; height: 34px; border: 1px solid var(--border);
+    background: none; border-radius: 8px; cursor: pointer; color: var(--muted);
+    font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+  }
+  .close-x:hover { background: var(--red-d); color: var(--red); border-color: var(--red); }
+
+  .panel-body { padding: 1.75rem 2rem; flex: 1; }
+  .pd-sect { margin-bottom: 1.5rem; }
+  .pd-lbl { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.7rem; }
+  .pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .pd-item label { font-size: 0.72rem; color: var(--muted); display: block; margin-bottom: 3px; }
+  .pd-item p { font-size: 0.9rem; color: var(--cream); font-weight: 500; }
+  .pd-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pd-chip { padding: 4px 12px; background: var(--card); border: 1px solid var(--border); border-radius: 100px; font-size: 0.77rem; color: var(--text); }
+  .ref-blk { background: var(--card); border-radius: 10px; padding: 1rem; font-size: 0.87rem; line-height: 1.75; color: var(--text); border-left: 3px solid var(--gold); }
+
+  .panel-foot {
+    padding: 1.5rem 2rem; border-top: 1px solid var(--border);
+    display: flex; gap: 0.75rem; flex-shrink: 0;
+  }
+  .pf-btn {
+    flex: 1; padding: 12px; border: none; border-radius: 10px;
+    font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 700;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .pf-appr { background: var(--green); color: #052e16; }
+  .pf-appr:hover { opacity: 0.85; }
+  .pf-rej  { background: var(--red-d); color: var(--red); border: 1px solid rgba(248,113,113,0.3); }
+  .pf-rej:hover  { background: var(--red); color: white; }
+  .pf-del  { background: rgba(93,112,128,0.15); color: var(--muted); border: 1px solid var(--border); }
+  .pf-del:hover  { background: var(--red-d); color: var(--red); border-color: var(--red); }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    padding: 12px 18px; border-radius: 11px;
+    font-size: 0.86rem; font-weight: 500; z-index: 400;
+    display: flex; align-items: center; gap: 8px;
+    transform: translateY(70px); opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35); max-width: 320px;
+  }
+  .toast.ok  { background: #052e16; border: 1px solid var(--green); color: var(--green); }
+  .toast.err { background: #2e0f14; border: 1px solid var(--red);   color: var(--red); }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media(max-width:900px) { .sidebar { display:none; } .stats { grid-template-columns: repeat(2,1fr); } .content { max-width:100vw; } }
+  @media(max-width:580px) { .stats { grid-template-columns: 1fr 1fr; } .content { padding:1.25rem; } }
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div class="login-wrap" id="login-wrap">
+  <div class="login-box">
+    <div class="login-seal">CTE</div>
+    <div class="login-school">Cagayan State University — Aparri</div>
+    <h2>Faculty Admin Panel</h2>
+    <p>College of Teacher Education — Portfolio Repository</p>
+    <label class="login-label">Faculty Password</label>
+    <input class="login-input" type="password" id="pwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()">
+    <button class="login-btn" onclick="login()">Sign In to Admin</button>
+    <div class="login-err" id="login-err"></div>
+  </div>
+</div>
+
+<!-- ── APP ── -->
+<div class="app" id="app">
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sb-logo">
+        <div class="sb-school">CTE — CSU Aparri</div>
+        <div class="sb-name">Portfolio <span>Repository</span></div>
+      </div>
+
+      <div class="sb-sect">Review Queue</div>
+      <button class="nav-btn active" onclick="goPage('pending',this)">
+        <span class="ico">⏳</span> Pending Review
+        <span class="nbadge" id="nbadge">0</span>
+      </button>
+
+      <div class="sb-sect">Management</div>
+      <button class="nav-btn" onclick="goPage('approved',this)">
+        <span class="ico">✅</span> Approved Portfolios
+      </button>
+
+      <div class="sb-sect">Overview</div>
+      <button class="nav-btn" onclick="goPage('dashboard',this)">
+        <span class="ico">📊</span> Dashboard
+      </button>
+
+      <div class="sb-foot">
+        <button class="logout-btn" onclick="logout()">← Sign Out</button>
+      </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- DASHBOARD -->
+      <div class="page" id="pg-dashboard">
+        <div class="pg-head"><h1>Dashboard</h1><p>Overview — College of Teacher Education, CSU Aparri</p></div>
+        <div class="stats">
+          <div class="sc"><div class="sc-lbl">Total Published</div><div class="sc-val" id="d-total">—</div><div class="sc-sub">Approved portfolios</div></div>
+          <div class="sc"><div class="sc-lbl">Pending Review</div><div class="sc-val" id="d-pend">—</div><div class="sc-sub">Awaiting action</div></div>
+          <div class="sc"><div class="sc-lbl">Batch Years</div><div class="sc-val" id="d-yrs">—</div><div class="sc-sub">Academic years tracked</div></div>
+          <div class="sc"><div class="sc-lbl">Programs</div><div class="sc-val">4</div><div class="sc-sub">BEED, Math, Eng, Sci</div></div>
+        </div>
+        <div class="tcard">
+          <div class="thead-bar"><span class="thead-title">Portfolios by Program</span></div>
+          <table><thead><tr><th>Program</th><th>Total Portfolios</th><th>Batch Years on Record</th></tr></thead>
+          <tbody id="d-table"></tbody></table>
+        </div>
+      </div>
+
+      <!-- PENDING -->
+      <div class="page on" id="pg-pending">
+        <div class="pg-head"><h1>Pending Review</h1><p>Student submissions waiting for faculty approval before going live.</p></div>
+        <div class="tcard">
+          <div class="thead-bar">
+            <span class="thead-title">Submitted Portfolios</span>
+            <input class="sbox" type="text" placeholder="Search submissions…" oninput="filterRows('tb-pend',this.value)">
+          </div>
+          <table><thead><tr><th>Student</th><th>Program</th><th>School</th><th>Batch Year</th><th>Date Submitted</th><th>Actions</th></tr></thead>
+          <tbody id="tb-pend"></tbody></table>
+        </div>
+      </div>
+
+      <!-- APPROVED -->
+      <div class="page" id="pg-approved">
+        <div class="pg-head"><h1>Approved Portfolios</h1><p>All published portfolios in the public repository.</p></div>
+        <div class="ytabs" id="ytabs"><button class="ytab on" onclick="yrFilter('all',this)">All Years</button></div>
+        <div class="tcard">
+          <div class="thead-bar">
+            <span class="thead-title">Published Portfolios</span>
+            <input class="sbox" type="text" placeholder="Search portfolios…" oninput="filterRows('tb-appr',this.value)">
+          </div>
+          <table><thead><tr><th>Student</th><th>Program</th><th>School</th><th>Batch Year</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="tb-appr"></tbody></table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- SIDE PANEL -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closePanel()">
+  <div class="panel">
+    <div class="panel-top">
+      <h3 id="pn-name">Portfolio Detail</h3>
+      <button class="close-x" onclick="closePanel()">✕</button>
+    </div>
+    <div class="panel-body">
+      <div class="pd-sect"><div class="pd-lbl">Student Info</div><div class="pd-grid" id="pn-info"></div></div>
+      <div class="pd-sect"><div class="pd-lbl">Internship Details</div><div class="pd-grid" id="pn-intern"></div></div>
+      <div class="pd-sect" id="pn-comp-sec"><div class="pd-lbl">Key Competencies</div><div class="pd-chips" id="pn-comps"></div></div>
+      <div class="pd-sect" id="pn-ref-sec"><div class="pd-lbl">Reflection & Learnings</div><div class="ref-blk" id="pn-ref"></div></div>
+    </div>
+    <div class="panel-foot" id="pn-foot"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="tmsg"></span></div>
+
+<script>
+  // ── CONFIG ─────────────────────────────────────────────────────
+  const SCRIPT_URL      = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+  const FACULTY_PASSWORD = 'CTE2026';
+
+  let pendingData  = [];
+  let approvedData = [];
+  let activeYr     = 'all';
+  let curId        = null;
+  let curSrc       = null;
+
+  // ── AUTH ───────────────────────────────────────────────────────
+  function login() {
+    if (document.getElementById('pwd').value === FACULTY_PASSWORD) {
+      document.getElementById('login-wrap').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      loadAll();
+    } else {
+      document.getElementById('login-err').textContent = '❌ Incorrect password.';
+    }
+  }
+  function logout() {
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('login-wrap').style.display = 'flex';
+    document.getElementById('pwd').value = '';
+  }
+
+  // ── NAV ────────────────────────────────────────────────────────
+  function goPage(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+    document.getElementById('pg-'+id).classList.add('on');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ── API ────────────────────────────────────────────────────────
+  async function get(params) {
+    const u = new URL(SCRIPT_URL);
+    Object.entries(params).forEach(([k,v]) => u.searchParams.set(k,v));
+    const r = await fetch(u.toString());
+    return r.json();
+  }
+
+  async function loadAll() {
+    await Promise.all([loadPending(), loadApproved()]);
+    buildDash();
+  }
+
+  async function loadPending() {
+    try {
+      const r = await get({ action:'getPending' });
+      pendingData = r.data || [];
+      renderPending();
+    } catch(e) { console.error(e); }
+  }
+
+  async function loadApproved() {
+    try {
+      const r = await get({ action:'getPortfolios' });
+      approvedData = r.data || [];
+      renderApproved();
+      buildYrTabs();
+    } catch(e) { console.error(e); }
+  }
+
+  // ── HELPERS ────────────────────────────────────────────────────
+  function ppill(prog) {
+    const m = { BEED:'pb', 'BSED Math':'pm', 'BSED English':'pe', 'BSED Science':'ps' };
+    return `<span class="ppill ${m[prog]||'pb'}">${prog}</span>`;
+  }
+  function fmtDate(iso) {
+    if (!iso) return '—';
+    try { return new Date(iso).toLocaleDateString('en-PH',{month:'short',day:'numeric',year:'numeric'}); }
+    catch { return String(iso); }
+  }
+  function getComps(p) {
+    return typeof p.competencies === 'string' ? p.competencies.split('|').filter(Boolean) : (p.competencies||[]);
+  }
+
+  // ── RENDER PENDING ─────────────────────────────────────────────
+  function renderPending() {
+    document.getElementById('nbadge').textContent = pendingData.length;
+    const tb = document.getElementById('tb-pend');
+    if (!pendingData.length) { tb.innerHTML = `<tr><td class="empty-td" colspan="6">No pending submissions — all caught up ✓</td></tr>`; return; }
+    tb.innerHTML = pendingData.map(p => `
+      <tr data-s="${[p.name,p.program,p.school,p.year].join(' ').toLowerCase()}">
+        <td><div style="font-weight:600;color:var(--cream)">${p.name}</div><div style="font-size:.75rem;color:var(--muted)">${p.studentId||'—'}</div></td>
+        <td>${ppill(p.program)}</td>
+        <td style="color:var(--text)">${p.school}</td>
+        <td style="font-family:'DM Mono',monospace;font-size:.81rem">${p.year}</td>
+        <td style="font-size:.81rem;color:var(--muted)">${fmtDate(p.submittedAt)}</td>
+        <td><div class="acts">
+          <button class="ab ab-view" onclick="openPanel('${p.id}','pending')">View</button>
+          <button class="ab ab-appr" onclick="doApprove('${p.id}')">✓ Approve</button>
+          <button class="ab ab-rej"  onclick="doReject('${p.id}')">✕ Reject</button>
+        </div></td>
+      </tr>`).join('');
+  }
+
+  // ── RENDER APPROVED ────────────────────────────────────────────
+  function renderApproved(yr) {
+    let list = approvedData;
+    if (yr && yr !== 'all') list = list.filter(p => p.year === yr);
+    const tb = document.getElementById('tb-appr');
+    if (!list.length) { tb.innerHTML = `<tr><td class="empty-td" colspan="6">No portfolios found.</td></tr>`; return; }
+    tb.innerHTML = list.map(p => `
+      <tr data-s="${[p.name,p.program,p.school,p.year].join(' ').toLowerCase()}">
+        <td><div style="font-weight:600;color:var(--cream)">${p.name}</div><div style="font-size:.75rem;color:var(--muted)">${p.studentId||'—'}</div></td>
+        <td>${ppill(p.program)}</td>
+        <td>${p.school}</td>
+        <td style="font-family:'DM Mono',monospace;font-size:.81rem">${p.year}</td>
+        <td><span class="spill sp-appr">Published</span></td>
+        <td><div class="acts">
+          <button class="ab ab-view" onclick="openPanel('${p.id}','approved')">View</button>
+          <button class="ab ab-del"  onclick="doDelete('${p.id}')">Remove</button>
+        </div></td>
+      </tr>`).join('');
+  }
+
+  function buildYrTabs() {
+    const yrs = [...new Set(approvedData.map(p=>p.year))].sort().reverse();
+    document.getElementById('ytabs').innerHTML =
+      `<button class="ytab on" onclick="yrFilter('all',this)">All Years</button>` +
+      yrs.map(y=>`<button class="ytab" onclick="yrFilter('${y}',this)">${y}</button>`).join('');
+  }
+
+  function yrFilter(yr, btn) {
+    activeYr = yr;
+    document.querySelectorAll('#ytabs .ytab').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    renderApproved(yr);
+  }
+
+  function filterRows(tbId, q) {
+    document.querySelectorAll(`#${tbId} tr[data-s]`).forEach(row => {
+      row.style.display = !q || row.dataset.s.includes(q.toLowerCase()) ? '' : 'none';
+    });
+  }
+
+  // ── DASHBOARD ──────────────────────────────────────────────────
+  function buildDash() {
+    document.getElementById('d-total').textContent = approvedData.length;
+    document.getElementById('d-pend').textContent  = pendingData.length;
+    document.getElementById('d-yrs').textContent   = new Set(approvedData.map(p=>p.year)).size;
+    const progs = ['BEED','BSED Math','BSED English','BSED Science'];
+    document.getElementById('d-table').innerHTML = progs.map(prog => {
+      const items = approvedData.filter(p=>p.program===prog);
+      const yrs   = [...new Set(items.map(p=>p.year))].sort().reverse().join(', ')||'—';
+      return `<tr><td>${ppill(prog)}</td><td style="font-family:'DM Mono',monospace">${items.length}</td><td style="font-size:.8rem;color:var(--muted)">${yrs}</td></tr>`;
+    }).join('');
+  }
+
+  // ── SIDE PANEL ─────────────────────────────────────────────────
+  function openPanel(id, src) {
+    const data = src === 'pending' ? pendingData : approvedData;
+    const p    = data.find(x => String(x.id) === String(id));
+    if (!p) return;
+    curId = id; curSrc = src;
+
+    document.getElementById('pn-name').textContent = p.name;
+    document.getElementById('pn-info').innerHTML = `
+      <div class="pd-item"><label>Student ID</label><p>${p.studentId||'—'}</p></div>
+      <div class="pd-item"><label>Program</label><p>${p.program}</p></div>
+      <div class="pd-item"><label>Batch Year</label><p>${p.year}</p></div>
+      <div class="pd-item"><label>Date Submitted</label><p>${fmtDate(p.submittedAt)}</p></div>`;
+    document.getElementById('pn-intern').innerHTML = `
+      <div class="pd-item"><label>School</label><p>${p.school}</p></div>
+      <div class="pd-item"><label>Cooperating Teacher</label><p>${p.teacher||'—'}</p></div>
+      <div class="pd-item"><label>Grade Level</label><p>${p.grade||'—'}</p></div>
+      <div class="pd-item"><label>Subject</label><p>${p.subject||'—'}</p></div>`;
+
+    const comps = getComps(p);
+    document.getElementById('pn-comp-sec').style.display = comps.length ? '' : 'none';
+    document.getElementById('pn-comps').innerHTML = comps.map(c=>`<span class="pd-chip">${c}</span>`).join('');
+    document.getElementById('pn-ref-sec').style.display = p.reflection ? '' : 'none';
+    document.getElementById('pn-ref').textContent = p.reflection || '';
+
+    const foot = document.getElementById('pn-foot');
+    if (src === 'pending') {
+      foot.innerHTML = `
+        <button class="pf-btn pf-rej"  onclick="doReject('${id}');closePanel()">✕ Reject</button>
+        <button class="pf-btn pf-appr" onclick="doApprove('${id}')">✓ Approve & Publish</button>`;
+    } else {
+      foot.innerHTML = `<button class="pf-btn pf-del" onclick="doDelete('${id}');closePanel()">🗑 Remove from Repository</button>`;
+    }
+
+    document.getElementById('overlay').classList.add('on');
+  }
+  function closePanel() { document.getElementById('overlay').classList.remove('on'); }
+
+  // ── ACTIONS ────────────────────────────────────────────────────
+  async function doApprove(id) {
+    if (!confirm('Approve this portfolio and publish it to the public repository?')) return;
+    try {
+      const r = await get({ action:'approve', id });
+      if (r.success) { toast('✓ Portfolio approved and published!','ok'); closePanel(); await loadAll(); }
+      else throw new Error(r.error);
+    } catch { toast('❌ Failed to approve. Try again.','err'); }
+  }
+
+  async function doReject(id) {
+    if (!confirm('Reject and permanently remove this submission?')) return;
+    try {
+      const r = await get({ action:'reject', id });
+      if (r.success) { toast('Submission rejected and removed.','ok'); closePanel(); await loadPending(); buildDash(); }
+      else throw new Error(r.error);
+    } catch { toast('❌ Failed to reject. Try again.','err'); }
+  }
+
+  async function doDelete(id) {
+    if (!confirm('Permanently remove this portfolio from the public repository?')) return;
+    try {
+      const r = await get({ action:'delete', id, sheet:'portfolios' });
+      if (r.success) { toast('Portfolio removed.','ok'); await loadApproved(); buildYrTabs(); buildDash(); }
+      else throw new Error(r.error);
+    } catch { toast('❌ Failed to remove.','err'); }
+  }
+
+  // ── TOAST ──────────────────────────────────────────────────────
+  let tt;
+  function toast(msg, type) {
+    clearTimeout(tt);
+    const t = document.getElementById('toast');
+    t.className = `toast ${type}`;
+    document.getElementById('tmsg').textContent = msg;
+    t.classList.add('show');
+    tt = setTimeout(()=>t.classList.remove('show'), 3500);
+  }
+</https://script.google.com/macros/s/AKfycbwHXF3xpNs9_xFcS-wXB6tLV1DFzdbo6fI0uACQmOpDWXotvHHeuykFQCIUYvgcL7K5aQ/exec>
+</body>
+</html>
